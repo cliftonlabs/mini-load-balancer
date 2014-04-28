@@ -1,5 +1,5 @@
 Instructions
-------------
+============
 
 The app is a simple flask script that responds to /tetra/X and calculates second
 order tetra calculations. There is also an haproxy config file to show off how
@@ -8,12 +8,14 @@ to scale the script using a load balancer.
 Initial Setup
 -------------
 
+```bash
 # set up your virtual environment (optional)
 virtualenv venv
 source venv/bin/activate
 
 # install flask
 pip install -r requirements.txt
+```
 
 Test Single Instance
 --------------------

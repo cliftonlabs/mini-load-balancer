@@ -1,0 +1,51 @@
+Instructions
+------------
+
+The app is a simple flask script that responds to /tetra/X and calculates second
+order tetra calculations. There is also an haproxy config file to show off how
+to scale the script using a load balancer.
+
+Initial Setup
+-------------
+
+# set up your virtual environment (optional)
+virtualenv venv
+source venv/bin/activate
+
+# install flask
+pip install -r requirements.txt
+
+Test Single Instance
+--------------------
+
+# run the server
+python server.py 4000
+
+# test it:
+siege -c 100 -r -b http://localhost:4000/tetra/10000
+# result: 28 requests/sec
+
+Set Up A Cluster
+----------------
+
+# install haproxy
+apt-get install haproxy
+
+Test the cluster
+----------------
+
+# spin up a 'cluster'
+python server.py 9000 &
+python server.py 9001 &
+python server.py 9002 &
+python server.py 9003 &
+
+# run haproxy
+haproxy -V -f haproxy.cfg
+
+# verify health checks
+# visit http://localhost:8888/
+
+# benchmark it!
+siege -c 1000 -r -b http://localhost:8000/tetra/10000
+# result: 90 req/sec

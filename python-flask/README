@@ -1,12 +1,10 @@
-Instructions
-============
+# Second Order Tetra
 
 The app is a simple flask script that responds to /tetra/X and calculates second
 order tetra calculations. There is also an haproxy config file to show off how
 to scale the script using a load balancer.
 
-Initial Setup
--------------
+# Initial Setup
 
 ```bash
 # set up your virtual environment (optional)

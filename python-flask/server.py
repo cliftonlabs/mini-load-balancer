@@ -25,4 +25,4 @@ if __name__ == '__main__':
     except IndexError:
         port = 5000
     print 'running on port %d' % port
-    app.run(port=port, threaded=True)
+    app.run(port=port)

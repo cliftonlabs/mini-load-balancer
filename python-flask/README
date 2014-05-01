@@ -51,3 +51,25 @@ haproxy -V -f haproxy.cfg
 # benchmark it!
 siege -c 1000 -r -b http://localhost:8000/tetra/10000
 # result: 90 req/sec
+
+========================================
+
+For a tetra of 140, 100 concurrent users
+Go: 
+15000 r/sec (4 load balanced instances)
+12800 r/sec (single instance)
+
+Python:
+5900 r/sec (4 load balanced instances)
+2100 r/sec (single instance)
+
+-----------------------------------------
+
+For a tetra of 140, 500 concurrent users
+Go:
+7000 r/sec (load balanced)
+6127 r/sec (single instance)
+
+Python:
+4700 r/sec (load balanced)
+735 r/sec (single instance) (connection refused after second run)
